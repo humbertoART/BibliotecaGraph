@@ -1,7 +1,7 @@
 from Edge import Edge
 from Node import Node
 from Graph import Graph
-import random
+import random, math
 
 def grafoMalla(m,n,directed=False):
     if m < 1 or n < 1:
@@ -80,5 +80,32 @@ def grafoGilbet(n,p,directed=False):
 
     return graph
 
-g = grafoGilbet(6,0.5,directed=False)
+# g = grafoGilbet(6,0.5,directed=False)
+# print(g)
+
+def grafoGeograficoSimple(n,r,directed=False):
+    graph = Graph(directed)
+    for i in range(n):
+        graph.add_node(Node(i))
+
+    nodes_list = []
+    for i in graph.V:
+        x = round(random.random(),4)
+        y = round(random.random(),4)
+        nodes_list.append((i,x,y))
+
+    for i in nodes_list:
+        for j in nodes_list:
+            if i != j:
+                n1, x1, y1 = i
+                n2, x2, y2 = j
+
+                distance = math.sqrt((x2 - x1)**2 + (y2-y1)**2) 
+                if distance <= r:
+                    graph.add_edge(Edge(n1,n2))
+
+    print(f'{nodes_list}')
+    return graph
+
+g = grafoGeograficoSimple(500,1,directed=False)
 print(g)
