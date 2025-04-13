@@ -59,10 +59,26 @@ def grafoErdosRenyi(n,m,directed=False):
             print(f'i:[{i[0]}][{i[1]}]')
             graph.add_edge(Edge(i[0],i[1]))
 
-
     print(f'list:{nodes_list}')
     print(f'random: {random_list}')
     return graph
 
-g = grafoErdosRenyi(20,7,directed=False)
+# g = grafoErdosRenyi(20,7,directed=False)
+# print(g)
+
+def grafoGilbet(n,p,directed=False):
+    graph = Graph(directed)
+    for i in range(n):
+        graph.add_node(Node(i))
+
+    for i in graph.V:
+        for j in graph.V:
+            if i != j and random.random() <= p:
+                graph.add_edge(Edge(i,j))
+
+    # print(f'list:{nodes_list}')
+
+    return graph
+
+g = grafoGilbet(6,0.5,directed=False)
 print(g)

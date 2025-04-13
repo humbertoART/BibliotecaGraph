@@ -5,7 +5,6 @@ class Edge:
         self.v = v 
         self.attr = []
         self.id = (u.id, v.id)
-        print('Hello Edge')
 
     def __repr__(self):
         return f'u: {self.u} v: {self.v}'
