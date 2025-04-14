@@ -26,6 +26,26 @@ class Graph:
             return False
         self.E[edge.id] = edge
         return True
+    
+    def graphiViz(self,file):
+        with open(file,'w') as file:
+            if self.dirigido:
+                file.write("digraph G {\n")
+            else:
+                file.write("graph G {\n")
+
+            for i in self.V:
+                file.write(f"  {i.id};\n")
+
+            for i in self.E.values():
+                u, v = i.id
+                if self.dirigido:
+                    connector = "->"
+                else:
+                    connector = "--"
+                file.write(f"   {u} {connector} {v};\n")
+            
+            file.write("}\n")
 
     # def __str__(self):
     #     str_nodes = ""
