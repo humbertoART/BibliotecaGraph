@@ -97,8 +97,9 @@ def grafoGeograficoSimple(n,r,directed=False):
     for i in nodes_list:
         for j in nodes_list:
             if i != j:
-                n1, x1, y1 = i
-                n2, x2, y2 = j
+                #elección de dos tuplas distintas que no se hayan seleccionado previamente
+                n1, x1, y1 = i #tupla 1
+                n2, x2, y2 = j #tupla 2
 
                 distance = math.sqrt((x2 - x1)**2 + (y2-y1)**2) 
                 if distance <= r:
@@ -107,5 +108,57 @@ def grafoGeograficoSimple(n,r,directed=False):
     print(f'{nodes_list}')
     return graph
 
-g = grafoGeograficoSimple(500,1,directed=False)
+# g = grafoGeograficoSimple(500,1,directed=False)
+# print(g)
+
+def grafoBarabasiAlbert(n,d,directed=False):
+    graph = Graph(directed)
+    nodes_list = []
+
+    for i in range(n):
+        graph.add_node(Node(i))
+
+    for i in graph.V:
+        degree = 0
+        nodes_list.append((i,degree))
+
+    if len(nodes_list) > 1:
+        graph.add_edge(Edge(nodes_list[0][0],nodes_list[1][0]))
+        nodes_list[0] = (nodes_list[0][0],nodes_list[0][1]+1)
+        nodes_list[1] = (nodes_list[1][0],nodes_list[1][1]+1)
+
+    for i in nodes_list:
+        for j in nodes_list:
+            if i != j:
+                n1,d1 = i #tupla 1
+                n2,d2 = j #tupla 2
+                total_degree = 0
+                for n, degree in nodes_list:
+                    total_degree += degree
+                    print(f'total degree:{total_degree}')
+                if total_degree > 0:
+                    p = d2/total_degree
+                    print(f'p:{p}')
+                else:
+                    p = 0
+                    print(f'p:{p}')
+                
+                if random.random() < p and d1 < d:
+                    if graph.add_edge(Edge(n1,n2)):
+                        print(f'{n1}--->{n2}')
+                        for k in range(len(nodes_list)):
+                            if nodes_list[k][0] == n1:
+                                nodes_list[k] = (nodes_list[k][0], nodes_list[k][1]+1)
+                            if nodes_list[k][0] == n2:
+                                nodes_list[k] = (nodes_list[k][0], nodes_list[k][1]+1)
+    return  graph
+
+# g = grafoBarabasiAlbert(5,2,directed=False)
+# print(g)
+
+
+def grafoDorogovtsevMendes(n,directed=False):
+    return
+
+g = grafoDorogovtsevMendes(5,directed=False)
 print(g)
