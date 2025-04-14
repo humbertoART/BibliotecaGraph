@@ -158,7 +158,25 @@ def grafoBarabasiAlbert(n,d,directed=False):
 
 
 def grafoDorogovtsevMendes(n,directed=False):
-    return
+    graph = Graph(directed)
+    for i in range(3):
+        graph.add_node(Node(i))
 
-g = grafoDorogovtsevMendes(5,directed=False)
-print(g)
+    graph.add_edge(Edge(graph.V[0],graph.V[1]))
+    graph.add_edge(Edge(graph.V[1],graph.V[2]))
+    graph.add_edge(Edge(graph.V[2],graph.V[0]))
+    print(f'pairs:{graph.E}')
+
+    for i in range(3,n):
+        graph.add_node(Node(i))
+        edge_random = random.choice(list(graph.E))
+
+        current_node = graph.V[i]
+        u, v = edge_random
+        graph.add_edge(Edge(current_node,Node(u)))
+        graph.add_edge(Edge(current_node,Node(v)))
+
+    return graph
+
+# g = grafoDorogovtsevMendes(3,directed=False)
+# print(g)
