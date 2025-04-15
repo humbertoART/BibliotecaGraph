@@ -4,6 +4,16 @@ from Graph import Graph
 import random, math
 
 def grafoMalla(m,n,directed=False):
+    """
+        Genera grafo de malla
+        :param m: número de columnas (> 1)
+        :param n: número de filas (> 1)
+        :param dirigido: el grafo es dirigido?
+        :return: grafo generado
+    """
+    if m < 2 or n < 2:
+        raise Exception("El número debe ser mayor a 1")
+    
     product = m * n
     graph = Graph(directed)
 
@@ -22,6 +32,19 @@ def grafoMalla(m,n,directed=False):
     return graph
 
 def grafoErdosRenyi(n,m,directed=False):
+    """
+    Genera grafo aleatorio con el modelo Erdos-Renyi
+    :param n: número de nodos (> 0)
+    :param m: número de aristas (>= n-1)
+    :param dirigido: el grafo es dirigido?
+    :return: grafo generado
+    """   
+    if n < 1:
+        raise Exception("El valor de n debe ser mayor a 0")
+    
+    if m < n - 1:
+        raise Exception("El valor de m debe ser mayor o igual a n-1")
+
     graph = Graph(directed)
     for i in range(n):
         graph.add_node(Node(i))
@@ -50,6 +73,19 @@ def grafoErdosRenyi(n,m,directed=False):
     return graph
 
 def grafoGilbet(n,p,directed=False):
+    """
+    Genera grafo aleatorio con el modelo Gilbert
+    :param n: número de nodos (> 0)
+    :param p: probabilidad de crear una arista (0, 1)
+    :param dirigido: el grafo es dirigido?
+    :return: grafo generado
+    """  
+    if n < 1:
+        raise Exception("El valor de n debe ser mayor a 0")
+    
+    if p < 0 or p > 1:
+        raise Exception("El valor de p debe estar entre [0,1]")
+
     graph = Graph(directed)
     for i in range(n):
         graph.add_node(Node(i))
@@ -61,6 +97,19 @@ def grafoGilbet(n,p,directed=False):
     return graph
 
 def grafoGeograficoSimple(n,r,directed=False):
+    """
+    Genera grafo aleatorio con el modelo geográfico simple
+    :param n: número de nodos (> 0)
+    :param r: distancia máxima para crear un nodo (0, 1)
+    :param dirigido: el grafo es dirigido?
+    :return: grafo generado
+    """  
+
+    if n < 1:
+        raise Exception("El valor de n debe ser mayor a 0")
+    if r < 0 or r > 1:
+        raise Exception("El valor de r debe estar entre [0,1]")
+
     graph = Graph(directed)
     for i in range(n):
         graph.add_node(Node(i))
@@ -84,6 +133,19 @@ def grafoGeograficoSimple(n,r,directed=False):
     return graph
 
 def grafoBarabasiAlbert(n,d,directed=False):
+    """
+    Genera grafo aleatorio con el modelo Barabasi-Albert
+    :param n: número de nodos (> 0)
+    :param d: grado máximo esperado por cada nodo (> 1)
+    :param dirigido: el grafo es dirigido?
+    :return: grafo generado
+    """   
+
+    if n < 1:
+        raise Exception("El valor de n debe ser mayor a 0")
+    if d < 2:
+        raise Exception("El valor de d debe ser mayor a 1")
+
     graph = Graph(directed)
     nodes_list = []
 
@@ -121,6 +183,16 @@ def grafoBarabasiAlbert(n,d,directed=False):
     return  graph
 
 def grafoDorogovtsevMendes(n,directed=False):
+    """
+    Genera grafo aleatorio con el modelo Barabasi-Albert
+    :param n: número de nodos (≥ 3)
+    :param dirigido: el grafo es dirigido?
+    :return: grafo generado
+    """
+
+    if n < 3:
+        raise Exception("El valor de n debe ser mayor o igual que 3")
+
     graph = Graph(directed)
     for i in range(3):
         graph.add_node(Node(i))
@@ -139,3 +211,6 @@ def grafoDorogovtsevMendes(n,directed=False):
         graph.add_edge(Edge(current_node,Node(v)))
 
     return graph
+
+
+g = grafoDorogovtsevMendes(3,directed=False)
