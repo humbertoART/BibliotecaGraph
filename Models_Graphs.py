@@ -92,8 +92,7 @@ def grafoBarabasiAlbert(n,d,directed=False):
         graph.add_node(Node(i))
 
     for i in graph.V:
-        degree = 0
-        nodes_list.append((i,degree))
+        nodes_list.append((i,0))
 
     if len(nodes_list) > 1:
         graph.add_edge(Edge(nodes_list[0][0],nodes_list[1][0]))
@@ -109,7 +108,7 @@ def grafoBarabasiAlbert(n,d,directed=False):
                 for n, degree in nodes_list:
                     total_degree += degree
                 if total_degree > 0:
-                    p = d2/total_degree
+                    p = d/total_degree
                 else:
                     p = 0
                 

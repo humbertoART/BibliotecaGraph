@@ -11,7 +11,7 @@ def main():
     p = 0.5
     r1 = 0.4
     r2 = 0.15
-    d = 4
+    d = 1
 
     # gMallan1 = grafoMalla(m,n1,directed)
     # gMallan2 = grafoMalla(m,n2,directed)
@@ -74,21 +74,21 @@ def main():
     # "CIC IPN/Primer Semestre/Analisis y Diseño de Algoritmos/" \
     # "Proyecto_Biblioteca/BibliotecaGraph/Texto_Grafos/gSimplen3.dot")            
 
-    # gBarabasin1 = grafoBarabasiAlbert(n1,d,directed)
-    # gBarabasin2 = grafoBarabasiAlbert(n2,d,directed)
-    # gBarabasin3 = grafoBarabasiAlbert(n3,d,directed)
+    gBarabasin1 = grafoBarabasiAlbert(n1,d,directed)
+    gBarabasin2 = grafoBarabasiAlbert(n2,d,directed)
+    gBarabasin3 = grafoBarabasiAlbert(n3,d,directed)
 
-    # gBarabasin1.graphiViz("C:/Users/hrosa/OneDrive/Documentos/" \
-    # "CIC IPN/Primer Semestre/Analisis y Diseño de Algoritmos/" \
-    # "Proyecto_Biblioteca/BibliotecaGraph/Texto_Grafos/gBarabasin1.dot")
+    gBarabasin1.graphiViz("C:/Users/hrosa/OneDrive/Documentos/" \
+    "CIC IPN/Primer Semestre/Analisis y Diseño de Algoritmos/" \
+    "Proyecto_Biblioteca/BibliotecaGraph/Texto_Grafos/gBarabasin1.dot")
 
-    # gBarabasin2.graphiViz("C:/Users/hrosa/OneDrive/Documentos/" \
-    # "CIC IPN/Primer Semestre/Analisis y Diseño de Algoritmos/" \
-    # "Proyecto_Biblioteca/BibliotecaGraph/Texto_Grafos/gBarabasin2.dot")
+    gBarabasin2.graphiViz("C:/Users/hrosa/OneDrive/Documentos/" \
+    "CIC IPN/Primer Semestre/Analisis y Diseño de Algoritmos/" \
+    "Proyecto_Biblioteca/BibliotecaGraph/Texto_Grafos/gBarabasin2.dot")
 
-    # gBarabasin3.graphiViz("C:/Users/hrosa/OneDrive/Documentos/" \
-    # "CIC IPN/Primer Semestre/Analisis y Diseño de Algoritmos/" \
-    # "Proyecto_Biblioteca/BibliotecaGraph/Texto_Grafos/gBarabasin3.dot")        
+    gBarabasin3.graphiViz("C:/Users/hrosa/OneDrive/Documentos/" \
+    "CIC IPN/Primer Semestre/Analisis y Diseño de Algoritmos/" \
+    "Proyecto_Biblioteca/BibliotecaGraph/Texto_Grafos/gBarabasin3.dot")        
 
     # gDorogovtsevn1 = grafoDorogovtsevMendes(n1,directed)
     # gDorogovtsevn2 = grafoDorogovtsevMendes(n2,directed)
