@@ -5,7 +5,7 @@ import random, math
 
 def grafoMalla(m,n,directed=False):
     product = m * n
-    graph = Graph(directed=True)
+    graph = Graph(directed)
 
     for i in range(product):
         graph.add_node(Node(i))
@@ -22,7 +22,7 @@ def grafoMalla(m,n,directed=False):
     return graph
 
 def grafoErdosRenyi(n,m,directed=False):
-    graph = Graph(directed=directed)
+    graph = Graph(directed)
     for i in range(n):
         graph.add_node(Node(i))
 
@@ -46,7 +46,6 @@ def grafoErdosRenyi(n,m,directed=False):
             random_list.append(pair)
 
         for i in random_list:
-            # print(f'i:[{i[0]}][{i[1]}]')
             graph.add_edge(Edge(i[0],i[1]))
     return graph
 
@@ -114,7 +113,6 @@ def grafoBarabasiAlbert(n,d,directed=False):
                 
                 if random.random() < p and d1 < d:
                     if graph.add_edge(Edge(n1,n2)):
-                        # print(f'{n1}--->{n2}')
                         for k in range(len(nodes_list)):
                             if nodes_list[k][0] == n1:
                                 nodes_list[k] = (nodes_list[k][0], nodes_list[k][1]+1)
