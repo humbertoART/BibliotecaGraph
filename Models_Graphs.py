@@ -211,6 +211,3 @@ def grafoDorogovtsevMendes(n,directed=False):
         graph.add_edge(Edge(current_node,Node(v)))
 
     return graph
-
-
-g = grafoDorogovtsevMendes(3,directed=False)
