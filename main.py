@@ -9,9 +9,12 @@ def main():
     mErdos2 = 500
     directed = False
     p = 0.5
+    p2 = 0.05
+    p3 = 0.01
     r1 = 0.4
     r2 = 0.15
-    d = 1
+    d1 = 2
+    d2 = 3
 
     # gMallan1 = grafoMalla(m,n1,directed)
     # gMallan2 = grafoMalla(m,n2,directed)
@@ -44,8 +47,8 @@ def main():
     # "Proyecto_Biblioteca/BibliotecaGraph/Texto_Grafos/gErdosn3.dot")        
 
     # gGilbertn1 = grafoGilbet(n1,p,directed)
-    # gGilbertn2 = grafoGilbet(n2,p,directed)
-    # gGilbertn3 = grafoGilbet(n3,p,directed)
+    # gGilbertn2 = grafoGilbet(n2,p2,directed)
+    # gGilbertn3 = grafoGilbet(n3,p3,directed)
     # gGilbertn1.graphiViz("C:/Users/hrosa/OneDrive/Documentos/" \
     # "CIC IPN/Primer Semestre/Analisis y Diseño de Algoritmos/" \
     # "Proyecto_Biblioteca/BibliotecaGraph/Texto_Grafos/gGilbertn1.dot")
@@ -74,37 +77,37 @@ def main():
     # "CIC IPN/Primer Semestre/Analisis y Diseño de Algoritmos/" \
     # "Proyecto_Biblioteca/BibliotecaGraph/Texto_Grafos/gSimplen3.dot")            
 
-    gBarabasin1 = grafoBarabasiAlbert(n1,d,directed)
-    gBarabasin2 = grafoBarabasiAlbert(n2,d,directed)
-    gBarabasin3 = grafoBarabasiAlbert(n3,d,directed)
+    # gBarabasin1 = grafoBarabasiAlbert(n1,d1,directed)
+    # gBarabasin2 = grafoBarabasiAlbert(n2,d1,directed)
+    # gBarabasin3 = grafoBarabasiAlbert(n3,d2,directed)
 
-    gBarabasin1.graphiViz("C:/Users/hrosa/OneDrive/Documentos/" \
-    "CIC IPN/Primer Semestre/Analisis y Diseño de Algoritmos/" \
-    "Proyecto_Biblioteca/BibliotecaGraph/Texto_Grafos/gBarabasin1.dot")
-
-    gBarabasin2.graphiViz("C:/Users/hrosa/OneDrive/Documentos/" \
-    "CIC IPN/Primer Semestre/Analisis y Diseño de Algoritmos/" \
-    "Proyecto_Biblioteca/BibliotecaGraph/Texto_Grafos/gBarabasin2.dot")
-
-    gBarabasin3.graphiViz("C:/Users/hrosa/OneDrive/Documentos/" \
-    "CIC IPN/Primer Semestre/Analisis y Diseño de Algoritmos/" \
-    "Proyecto_Biblioteca/BibliotecaGraph/Texto_Grafos/gBarabasin3.dot")        
-
-    # gDorogovtsevn1 = grafoDorogovtsevMendes(n1,directed)
-    # gDorogovtsevn2 = grafoDorogovtsevMendes(n2,directed)
-    # gDorogovtsevn3 = grafoDorogovtsevMendes(n3,directed)
-
-    # gDorogovtsevn1.graphiViz("C:/Users/hrosa/OneDrive/Documentos/" \
+    # gBarabasin1.graphiViz("C:/Users/hrosa/OneDrive/Documentos/" \
     # "CIC IPN/Primer Semestre/Analisis y Diseño de Algoritmos/" \
-    # "Proyecto_Biblioteca/BibliotecaGraph/Texto_Grafos/gDorogovtsenn1.dot") 
+    # "Proyecto_Biblioteca/BibliotecaGraph/Texto_Grafos/gBarabasin1.dot")
 
-    # gDorogovtsevn2.graphiViz("C:/Users/hrosa/OneDrive/Documentos/" \
+    # gBarabasin2.graphiViz("C:/Users/hrosa/OneDrive/Documentos/" \
     # "CIC IPN/Primer Semestre/Analisis y Diseño de Algoritmos/" \
-    # "Proyecto_Biblioteca/BibliotecaGraph/Texto_Grafos/gDorogovtsenn2.dot")     
+    # "Proyecto_Biblioteca/BibliotecaGraph/Texto_Grafos/gBarabasin2.dot")
 
-    # gDorogovtsevn3.graphiViz("C:/Users/hrosa/OneDrive/Documentos/" \
+    # gBarabasin3.graphiViz("C:/Users/hrosa/OneDrive/Documentos/" \
     # "CIC IPN/Primer Semestre/Analisis y Diseño de Algoritmos/" \
-    # "Proyecto_Biblioteca/BibliotecaGraph/Texto_Grafos/gDorogovtsenn3.dot")     
+    # "Proyecto_Biblioteca/BibliotecaGraph/Texto_Grafos/gBarabasin3.dot")        
+
+    gDorogovtsevn1 = grafoDorogovtsevMendes(n1,directed)
+    gDorogovtsevn2 = grafoDorogovtsevMendes(n2,directed)
+    gDorogovtsevn3 = grafoDorogovtsevMendes(n3,directed)
+
+    gDorogovtsevn1.graphiViz("C:/Users/hrosa/OneDrive/Documentos/" \
+    "CIC IPN/Primer Semestre/Analisis y Diseño de Algoritmos/" \
+    "Proyecto_Biblioteca/BibliotecaGraph/Texto_Grafos/gDorogovtsenn1.dot") 
+
+    gDorogovtsevn2.graphiViz("C:/Users/hrosa/OneDrive/Documentos/" \
+    "CIC IPN/Primer Semestre/Analisis y Diseño de Algoritmos/" \
+    "Proyecto_Biblioteca/BibliotecaGraph/Texto_Grafos/gDorogovtsenn2.dot")     
+
+    gDorogovtsevn3.graphiViz("C:/Users/hrosa/OneDrive/Documentos/" \
+    "CIC IPN/Primer Semestre/Analisis y Diseño de Algoritmos/" \
+    "Proyecto_Biblioteca/BibliotecaGraph/Texto_Grafos/gDorogovtsenn3.dot")     
 
 if __name__ == "__main__":
     main()
