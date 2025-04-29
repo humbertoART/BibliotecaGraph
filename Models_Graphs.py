@@ -211,3 +211,12 @@ def grafoDorogovtsevMendes(n,directed=False):
         graph.add_edge(Edge(current_node,Node(v)))
 
     return graph
+
+
+g = grafoMalla(12,2,directed=False)
+print(f'GRAPH***\n')
+print(f'bfs tree: {g}')
+# print(g)
+bfs_tree, layers = g.BFS(0)
+print(f'BFS***\n')
+print(f'bfs tree: {bfs_tree}')

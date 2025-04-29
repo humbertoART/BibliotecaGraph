@@ -25,6 +25,49 @@ class Graph:
         self.E[edge.id] = edge
         return True
     
+    def BFS(self,s):
+        bfs = Graph(directed=self.dirigido) #tree
+        start_node = None
+        discovered = {}
+        for i in self.V:
+            discovered[i] = False
+
+            if i.id == s:
+                start_node = i
+
+        if start_node is None:
+            return None
+            
+        discovered[start_node] = True
+        bfs.add_node(start_node)
+
+        counter_layer = 0
+        layers = []
+        layers.append([start_node])
+
+        while len(layers[counter_layer]) > 0:
+            next_layer = []
+            for u in layers[counter_layer]:
+                for edge in self.E.values():
+                    if edge.u == u:
+                        v = edge.v
+                    elif not self.dirigido and edge.v == u:
+                        v = edge.u
+                    else: 
+                        continue
+
+                    if not discovered[v]:
+                        discovered[v] = True
+                        bfs.add_node(v)
+                        bfs.add_edge(Edge(u,v))
+                        next_layer.append(v)
+
+            layers.append(next_layer)
+            counter_layer += 1
+
+        print(f'discovered: {discovered}')
+        return bfs,layers
+    
     def graphiViz(self,file):
         with open(file,'w') as file:
             if self.dirigido:
@@ -47,3 +90,5 @@ class Graph:
 
     def __repr__(self):
         return f"id: {str(self.id)} \nnodes: {self.V} edges: [{self.E}] \n"
+    
+
