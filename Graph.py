@@ -30,7 +30,7 @@ class Graph:
         start_node = None
         discovered = {}
         for i in self.V:
-            discovered[i] = False
+            discovered[i.id] = False
 
             if i.id == s:
                 start_node = i
@@ -38,7 +38,7 @@ class Graph:
         if start_node is None:
             return None
             
-        discovered[start_node] = True
+        discovered[start_node.id] = True
         bfs.add_node(start_node)
 
         counter_layer = 0
@@ -48,16 +48,15 @@ class Graph:
         while len(layers[counter_layer]) > 0:
             next_layer = []
             for u in layers[counter_layer]:
-                for edge in self.E.values():
-                    if edge.u == u:
-                        v = edge.v
-                    elif not self.dirigido and edge.v == u:
-                        v = edge.u
-                    else: 
+                for edge in self.E.values(): #todas las aristas
+                    if edge.u == u: #si nodo es origen
+                        v = edge.v #v es vecino
+                    elif not self.dirigido and edge.v == u: #si u es destino de arista
+                        v = edge.u #v es vecino
+                    else: #uno conectado con arista
                         continue
-
-                    if not discovered[v]:
-                        discovered[v] = True
+                    if not discovered[v.id]:
+                        discovered[v.id] = True
                         bfs.add_node(v)
                         bfs.add_edge(Edge(u,v))
                         next_layer.append(v)
@@ -67,6 +66,9 @@ class Graph:
 
         print(f'discovered: {discovered}')
         return bfs,layers
+    
+    def DFS_R(self,s):
+        return 
     
     def graphiViz(self,file):
         with open(file,'w') as file:

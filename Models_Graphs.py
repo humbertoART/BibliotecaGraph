@@ -213,10 +213,13 @@ def grafoDorogovtsevMendes(n,directed=False):
     return graph
 
 
-g = grafoMalla(12,2,directed=False)
+# g = grafoMalla(12,3,directed=False)
+g = grafoDorogovtsevMendes(12,directed=False)
 print(f'GRAPH***\n')
 print(f'bfs tree: {g}')
 # print(g)
-bfs_tree, layers = g.BFS(0)
+bfs_tree = g.BFS(3)
 print(f'BFS***\n')
 print(f'bfs tree: {bfs_tree}')
+# print(f'LAYERS-----------\n')
+# print(layers)
