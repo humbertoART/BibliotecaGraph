@@ -36,6 +36,7 @@ class Graph:
                 start_node = i
 
         if start_node is None:
+            raise Exception("Nodo source no existente")
             return None
             
         discovered[start_node.id] = True
@@ -68,8 +69,39 @@ class Graph:
         return bfs,layers
     
     def DFS_R(self,s):
-        return 
+        dfs = Graph(directed=self.dirigido) #tree
+        start_node = None
+        explored = {}
+
+        for i in self.V:
+            explored[i.id] = False #todos nno explorados
+
+            if i.id == s:
+                start_node = i
+
+        if start_node is None:
+            raise Exception("Node source no existente")
+        
+        self.DFS_RECURSIVE(start_node,explored,dfs)
+        return dfs
     
+    def DFS_RECURSIVE(self,u,explored,dfs):
+        explored[u.id] = True
+        dfs.add_node(u)
+
+        for edge in self.E.values():
+            if edge.u == u: #si nodo es origen 
+                v = edge.v
+            elif not self.dirigido and edge.v == u: #si no es dirigido y u es destino
+                v = edge.u
+            else:
+                continue
+
+            if not explored[v.id]:
+                explored[v.id] = True
+                dfs.add_edge(Edge(u,v))
+                self.DFS_RECURSIVE(v,explored,dfs)
+
     def graphiViz(self,file):
         with open(file,'w') as file:
             if self.dirigido:
