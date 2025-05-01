@@ -96,11 +96,46 @@ class Graph:
                 v = edge.u
             else:
                 continue
-
             if not explored[v.id]:
                 explored[v.id] = True
                 dfs.add_edge(Edge(u,v))
                 self.DFS_RECURSIVE(v,explored,dfs)
+
+    def DFS_I(self,s):
+        dfs = Graph(directed=self.dirigido) #tree
+        start_node = None
+        explored = {}
+
+        for i in self.V:
+            explored[i.id] = False #todos no explorados
+
+            if i.id == s:
+                start_node = i
+
+        if start_node is None:
+            raise Exception("Node source no existente")
+
+        stack = [start_node]
+
+        while stack:
+            u = stack.pop()
+            if not explored[u.id]:
+                explored[u.id] = True
+                dfs.add_node(u)   
+
+            for edge in self.E.values():
+                if edge.u == u:
+                    v = edge.v
+                elif not self.dirigido and edge.v == u:
+                    v = edge.u
+                else:
+                    continue
+                
+                if not explored[v.id]:
+                    stack.append(v)
+                    dfs.add_edge(Edge(u,v))                 
+      
+        return dfs 
 
     def graphiViz(self,file):
         with open(file,'w') as file:

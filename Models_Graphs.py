@@ -227,3 +227,7 @@ print(f'GRAPH***\n')
 dfs_tree = g.DFS_R(6)
 print(f'====DFS_R===\n')
 print(f'dfs tree: {dfs_tree}')
+
+dfs_iterative = g.DFS_I(6)
+print('=====DFS INTERATIVE=====\n')
+print(f'dfs iterative tree: {dfs_iterative}')
