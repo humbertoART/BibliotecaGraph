@@ -9,6 +9,10 @@ Materia: Análisis y Diseño de Algoritmos.
 
 1) Imagenes_Grafos: Incluye las imágenes generadas de los distintos modelos de grafo creados.
 2) Texto_Grafos: Incluye los archivos GV generados de los distintos modelos de grafo creados.
+3) IMG_BFS_DFS: Se anexan las imágenes generadas de bfs y dfs (recursivo e iterativo) de los diferentes modelos de grafo creados.
+4) Texto_BFS_DFS: se incluyen los archivos GV generados de bfs y dfs (recursivo e iterativo) de los diferentes modelos de grafo creados.
+5) IMG_Modelos: se anexan las imágenes generadas de los diversos modelos de grafo creados para 30, 100 y 500 nodos.
+6) Texto_Proyecto2: se incluyen los archivos GV generados de los diversos modelos de grafo creados para 30, 100 y 500 nodos.
 
 ## Descripción por archivos .py
 
