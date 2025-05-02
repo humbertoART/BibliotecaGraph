@@ -211,23 +211,3 @@ def grafoDorogovtsevMendes(n,directed=False):
         graph.add_edge(Edge(current_node,Node(v)))
 
     return graph
-
-
-# g = grafoMalla(12,3,directed=False)
-g = grafoDorogovtsevMendes(12,directed=False)
-print(f'GRAPH***\n')
-# print(f'bfs tree: {g}')
-# # print(g)
-# bfs_tree = g.BFS(1)
-# print(f'BFS***\n')
-# print(f'bfs tree: {bfs_tree}')
-# # print(f'LAYERS-----------\n')
-# # print(layers)
-
-dfs_tree = g.DFS_R(6)
-print(f'====DFS_R===\n')
-print(f'dfs tree: {dfs_tree}')
-
-dfs_iterative = g.DFS_I(6)
-print('=====DFS INTERATIVE=====\n')
-print(f'dfs iterative tree: {dfs_iterative}')

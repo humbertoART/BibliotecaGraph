@@ -64,9 +64,7 @@ class Graph:
 
             layers.append(next_layer)
             counter_layer += 1
-
-        print(f'discovered: {discovered}')
-        return bfs,layers
+        return bfs
     
     def DFS_R(self,s):
         dfs = Graph(directed=self.dirigido) #tree
@@ -97,8 +95,8 @@ class Graph:
             else:
                 continue
             if not explored[v.id]:
-                explored[v.id] = True
                 dfs.add_edge(Edge(u,v))
+                explored[v.id] = True
                 self.DFS_RECURSIVE(v,explored,dfs)
 
     def DFS_I(self,s):
@@ -134,7 +132,6 @@ class Graph:
                 if not explored[v.id]:
                     stack.append(v)
                     dfs.add_edge(Edge(u,v))                 
-      
         return dfs 
 
     def graphiViz(self,file):
