@@ -1,3 +1,4 @@
+from random import randrange
 from Node import Node
 from Edge import Edge
 
@@ -133,8 +134,61 @@ class Graph:
                     stack.append(v)
                     dfs.add_edge(Edge(u,v))                 
         return dfs 
+    
+    def Dijkstra(self,s):
+        tree = Graph(directed=self.dirigido)
+        start_node = None
+        priority_queue = []
+        distance = {}
+        prev = {}
+        S = []
+        
+        for i in self.V:
+            if i.id == s:
+                start_node = i
 
-    def graphiViz(self,file):
+        if start_node is None:
+            raise Exception("Node source no existente")
+        
+        print('start node: ',start_node)
+
+        for edge in self.E.values():
+            if not edge.attr:
+                edge.attr = [randrange(1,100)]
+
+        for n in self.V:
+            # print(f'n:{n}')
+            distance[n] = float("inf")
+            prev[n] = None
+            
+        distance[start_node] = 0
+        # print(distance)
+        
+        priority_queue = [n for n in self.V]
+
+        while priority_queue:
+            u = min(priority_queue, key=distance.get)
+            # print(f"u:{u}")
+            priority_queue.remove(u)
+            S.append(u)
+
+            for edge in self.E.values():
+                if edge.u == u or (not self.dirigido and edge.v == u):
+                    v = edge.v if edge.u == u else edge.u
+                    
+                    if v not in S:
+                        w = edge.attr[0]
+
+                        if distance[v] > distance[u] + w:
+                            distance[v] = distance[u] + w
+                            prev[v] = u
+
+                            tree.add_node(v)
+                            tree.add_node(u)
+                            tree.add_edge(Edge(u,v))
+        return tree, distance
+
+    def graphiViz(self,file, distance=None):
         with open(file,'w') as file:
             if self.dirigido:
                 file.write("digraph G {\n")
@@ -142,7 +196,11 @@ class Graph:
                 file.write("graph G {\n")
 
             for i in self.V:
-                file.write(f"  {i.id};\n")
+                if distance and i in distance:
+                    # label = f"{i.id} "
+                    file.write(f'  {i.id} [label="{i.id} ({round(distance[i],2)})"];\n')
+                else:
+                    file.write(f"  {i.id};\n")
 
             for i in self.E.values():
                 u, v = i.id
@@ -157,4 +215,3 @@ class Graph:
     def __repr__(self):
         return f"id: {str(self.id)} \nnodes: {self.V} edges: [{self.E}] \n"
     
-
