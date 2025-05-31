@@ -155,6 +155,7 @@ class Graph:
         for edge in self.E.values():
             if not edge.attr:
                 edge.attr = [randrange(1,100)]
+            edge.weight = edge.attr[0]
 
         for n in self.V:
             # print(f'n:{n}')
@@ -177,15 +178,15 @@ class Graph:
                     v = edge.v if edge.u == u else edge.u
                     
                     if v not in S:
-                        w = edge.attr[0]
-
+                        w = edge.weight
+                    
                         if distance[v] > distance[u] + w:
                             distance[v] = distance[u] + w
                             prev[v] = u
 
                             tree.add_node(v)
                             tree.add_node(u)
-                            tree.add_edge(Edge(u,v))
+                            tree.add_edge(Edge(u,v,weight=w,attr=[w]))
         return tree, distance
 
     def graphiViz(self,file, distance=None):
