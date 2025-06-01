@@ -188,6 +188,44 @@ class Graph:
                             tree.add_node(u)
                             tree.add_edge(Edge(u,v,weight=w,attr=[w]))
         return tree, distance
+    
+    def KruskalD(self):
+        mst = Graph(directed=self.dirigido)
+
+        for edge in self.E.values():
+            if not edge.attr:
+                edge.attr = [randrange(1,100)]
+            edge.weight = edge.attr[0]
+
+        edges_list_sorted = [edge for edge in self.E.values()]
+        edges_list_sorted.sort(key=lambda edge: edge.weight)
+
+        component_connected = {n.id: n.id for n in self.V}
+        weight_MST = 0
+
+        for edge in edges_list_sorted:
+            u, v = edge.u, edge.v
+
+            if component_connected[u.id] != component_connected[v.id]:
+                mst.add_node(u)
+                mst.add_node(v)
+                mst.add_edge(edge)
+
+                weight_MST += edge.weight
+
+                old_component = component_connected[v.id]
+                new_component = component_connected[u.id]
+
+                for n in component_connected:
+                    if component_connected[n] == old_component:
+                        component_connected[n] = new_component
+
+            if len(mst.E) == len(self.V) -  1:
+                break
+
+        print(f'Peso MST: {weight_MST}')
+        return mst
+
 
     def graphiViz(self,file, distance=None):
         with open(file,'w') as file:
