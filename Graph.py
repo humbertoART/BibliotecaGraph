@@ -225,7 +225,41 @@ class Graph:
 
         print(f'Peso MST: {weight_MST}')
         return mst
+    
+    def KruskalI(self):
+        mst = Graph(directed=self.dirigido)
 
+        for node in self.V:
+            mst.add_node(node)
+
+        for edge in self.E.values():
+            if not edge.attr:
+                edge.attr = [randrange(1,100)]
+            edge.weight = edge.attr[0]
+            mst.add_edge(edge)
+
+        edges_list_sorted = [edge for edge in self.E.values()]
+        edges_list_sorted.sort(key=lambda edge: edge.weight, reverse=True)
+
+        for edge in edges_list_sorted:
+            u, v = edge.u, edge.v
+
+            if (u.id, v.id) in mst.E:
+                key = (u.id, v.id)
+            elif not self.dirigido and (v.id, u.id) in mst.E:
+                key = (v.id, u.id)
+            else:
+                continue #edge not found
+
+            edge_removed = mst.E[key]
+            del mst.E[key]
+
+            if len((mst.BFS(u.id)).V) != len(mst.V): #desconectado?
+                mst.E[key] = edge_removed
+
+            if len(mst.E) == len(mst.V) - 1:
+                break
+        return mst
 
     def graphiViz(self,file, distance=None):
         with open(file,'w') as file:
