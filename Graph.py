@@ -1,4 +1,5 @@
 from random import randrange
+import random
 from Node import Node
 from Edge import Edge
 
@@ -260,6 +261,49 @@ class Graph:
             if len(mst.E) == len(mst.V) - 1:
                 break
         return mst
+    
+    def Prim(self):
+        mst = Graph(directed=self.dirigido)
+        distance = {}
+        parent_node = {} #desde que nodo se llegó
+
+        for n in self.V:
+            distance[n] = float("inf")
+            parent_node[n] = None
+
+        # random_start = self.V[0]
+        random_start = random.choice(self.V)
+        distance[random_start] = 0
+
+        Q = [n for n in self.V]
+
+        while Q:
+            node_less = min(Q, key=lambda node: distance[node])
+            Q.remove(node_less)
+            mst.add_node(node_less)
+
+            if parent_node[node_less] is not None: #no está vacío
+                pn = parent_node[node_less]
+                key = (pn.id, node_less.id)
+                if key not in self.E: #sentido contrario
+                    key = (node_less.id, pn.id)
+                mst.add_edge(self.E[key])
+
+            for neighbor in Q:
+                key = (node_less.id, neighbor.id)
+                key_other = (neighbor.id, node_less.id)
+
+                if key in self.E or key_other in self.E:
+                    if key in self.E:
+                        new_key = key
+                    else:
+                        new_key = key_other
+                    edge = self.E[new_key]
+
+                    if edge.weight < distance[neighbor]:
+                        distance[neighbor] = edge.weight
+                        parent_node[neighbor] = node_less
+        return mst
 
     def graphiViz(self,file, distance=None):
         with open(file,'w') as file:
@@ -277,11 +321,12 @@ class Graph:
 
             for i in self.E.values():
                 u, v = i.id
+                weight = i.weight
                 if self.dirigido:
                     connector = "->"
                 else:
                     connector = "--"
-                file.write(f"   {u} {connector} {v};\n")
+                file.write(f'   {u} {connector} {v} [label="{weight}"];\n')
             
             file.write("}\n")
 
