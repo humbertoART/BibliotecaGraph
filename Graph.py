@@ -191,6 +191,7 @@ class Graph:
         return tree, distance
     
     def KruskalD(self):
+        print(f'KRUSKAL D')
         mst = Graph(directed=self.dirigido)
 
         for edge in self.E.values():
@@ -228,6 +229,7 @@ class Graph:
         return mst
     
     def KruskalI(self):
+        print(f'KRUSKAL I')
         mst = Graph(directed=self.dirigido)
 
         for node in self.V:
@@ -263,6 +265,7 @@ class Graph:
         return mst
     
     def Prim(self):
+        print(f'PRIM')
         mst = Graph(directed=self.dirigido)
         distance = {}
         parent_node = {} #desde que nodo se llegó
@@ -321,12 +324,11 @@ class Graph:
 
             for i in self.E.values():
                 u, v = i.id
-                weight = i.weight
                 if self.dirigido:
                     connector = "->"
                 else:
                     connector = "--"
-                file.write(f'   {u} {connector} {v} [label="{weight}"];\n')
+                file.write(f"   {u} {connector} {v};\n")
             
             file.write("}\n")
 
