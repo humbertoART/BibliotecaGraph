@@ -12,7 +12,17 @@ Materia: Análisis y Diseño de Algoritmos.
 3) IMG_BFS_DFS: Se anexan las imágenes generadas de bfs y dfs (recursivo e iterativo) de los diferentes modelos de grafo creados.
 4) Texto_BFS_DFS: se incluyen los archivos GV generados de bfs y dfs (recursivo e iterativo) de los diferentes modelos de grafo creados.
 5) IMG_Modelos: se anexan las imágenes generadas de los diversos modelos de grafo creados para 30, 100 y 500 nodos.
-6) Texto_Proyecto2: se incluyen los archivos GV generados de los diversos modelos de grafo creados para 30, 100 y 500 nodos.
+6) Texto_Proyecto2: se incluyen los archivos GV generados de los diversos modelos de grafo creados para 30, 100 y 500 nodos, referentes al Proeycto 2.
+7) Texto_Dijkstra: se anexan los archivos GV creados de Dijkstra de los diversos modelos de grafo creados en el Proyecto 3.
+8) Texto_Proyecto3: se incluyen los archivos GV de los modelos de grafo generados en el Proyecto 3.
+9) CP_MST_P4: se anexan las capturas de pantalla del valor del peso total de MST de Kruskal Directo e Inverso y Prim de cada uno de los modelos (están nombrados de la siguiente manera "NombredelModelo_30_500" donde el primer número corresponde al grafo con pocos nodos, y el segundo "número" corresponde al grafo con "muchos" nodos).
+10) IMG_DIJKSTRA: son las imágenes de Dijkstra de cada uno de los modelos generados en el Proyecto 3. 
+11) IMG_KRUSKAL_PRIM: están contentidas las imágenes creadas de Kruskal Directo e Inverso y Prim de los distintos modelos de grafo generados en el Proyecto 4.
+12) IMG_Proyecto3: imágenes de los modelos de grafo generados para el Proyecto 3.
+13) IMG_Proyecto4: incluye las imágenes de los diferentes modelos de grafo creados para el Proyecto 4.
+14) Texto_Kruskal_Prim: están los archivos GV de Kruskal (Directo e Inverso) y Prim de cada uno de los modelos de grafo generados en el Proyecto 4.
+15) Texto_Proyecto4: se anexan los archivos GV de los diferentes modelos de grado creados en el Proyecto 4.
+
 
 ## Descripción por archivos .py
 
