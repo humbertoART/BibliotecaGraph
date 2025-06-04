@@ -191,7 +191,6 @@ class Graph:
         return tree, distance
     
     def KruskalD(self):
-        print(f'KRUSKAL D')
         mst = Graph(directed=self.dirigido)
 
         for edge in self.E.values():
@@ -225,12 +224,12 @@ class Graph:
             if len(mst.E) == len(self.V) -  1:
                 break
 
-        print(f'Peso MST: {weight_MST}')
+        print(f'Peso MST de Kruskal Directo: {weight_MST}')
         return mst
     
     def KruskalI(self):
-        print(f'KRUSKAL I')
         mst = Graph(directed=self.dirigido)
+        weight_MST = 0
 
         for node in self.V:
             mst.add_node(node)
@@ -262,13 +261,18 @@ class Graph:
 
             if len(mst.E) == len(mst.V) - 1:
                 break
+
+        for edge in mst.E.values():
+            weight_MST += edge.weight
+
+        print(f'Peso MST de Kruskal Inverso: {weight_MST}')
         return mst
     
     def Prim(self):
-        print(f'PRIM')
         mst = Graph(directed=self.dirigido)
         distance = {}
         parent_node = {} #desde que nodo se llegó
+        weight_MST = 0
 
         for n in self.V:
             distance[n] = float("inf")
@@ -306,6 +310,11 @@ class Graph:
                     if edge.weight < distance[neighbor]:
                         distance[neighbor] = edge.weight
                         parent_node[neighbor] = node_less
+
+        for edge in mst.E.values():
+            weight_MST += edge.weight
+
+        print(f'Peso MST de Prim: {weight_MST}')
         return mst
 
     def graphiViz(self,file, distance=None):
