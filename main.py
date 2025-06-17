@@ -1,4 +1,5 @@
 from Models_Graphs import grafoMalla, grafoErdosRenyi, grafoGilbet, grafoGeograficoSimple, grafoBarabasiAlbert, grafoDorogovtsevMendes
+from Spring import Spring
 import sys
 sys.setrecursionlimit(30000)
 
@@ -951,6 +952,47 @@ def main():
     PrimDorogovtsev42.graphiViz("C:/Users/hrosa/OneDrive/Documentos/" \
     "CIC IPN/Primer Semestre/Analisis y Diseño de Algoritmos/" \
     "Proyecto_Biblioteca/BibliotecaGraph/Texto_Kruskal_Prim/gPrimDorogovtsev42.dot")                             
+
+    ########################################################################
+    #PROYECTO 5
+
+    #Modelo Malla
+    gMallan30 = grafoMalla(3,30)
+    gMallan100 = grafoMalla(2,100)
+    gMallan500 = grafoMalla(2,500)
+    Spring(gMallan30)
+    Spring(gMallan100)
+    Spring(gMallan500)
+
+    #Modelo Erdos Renyi
+    gErdosn100 = grafoErdosRenyi(100,289)
+    gErdosn500 = grafoErdosRenyi(500,2500)
+    Spring(gErdosn100)
+    Spring(gErdosn500)
+
+    #Modelo Gilbert
+    gGilbertn100 = grafoGilbet(100,0.5)
+    gGilbertn500 = grafoGilbet(500,0.02)
+    Spring(gGilbertn100)
+    Spring(gGilbertn500)
+
+    #Modelo Geográfico Simple
+    gSimplen100 = grafoGeograficoSimple(100,0.25,directed)
+    gSimplen500 = grafoGeograficoSimple(500,0.1,directed)
+    Spring(gSimplen100)
+    Spring(gSimplen500)
+
+    #Modelo Barabasi Albert
+    gBarabasin100 = grafoBarabasiAlbert(100,10,directed)
+    gBarabasin500 = grafoBarabasiAlbert(500,15,directed)
+    Spring(gBarabasin100)
+    Spring(gBarabasin500)
+
+    #Modelo Dorogovtsev Mendes
+    gDorogovtsevn100 = grafoDorogovtsevMendes(100,directed)
+    gDorogovtsevn500 = grafoDorogovtsevMendes(500,directed) 
+    Spring(gDorogovtsevn100)
+    Spring(gDorogovtsevn500)
 
 if __name__ == "__main__":
     main()
