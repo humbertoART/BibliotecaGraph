@@ -33,6 +33,7 @@ Materia: Análisis y Diseño de Algoritmos.
 3) Graph.py: clase del grafo.
 4) Models_Graphs.py: modelos de los grafos.
 5) main.py: Invocación de cada una de las funciones de los modelos de grafos e instrucción del lugar de almacenamiento de los textos .dot.
+6) Spring.py: método Spring.
 
 ## Tabla de parámatros, distribución y números de nodos usados por modelo.
 
