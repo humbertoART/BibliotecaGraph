@@ -4,28 +4,28 @@ import pygame
 from Models_Graphs import grafoMalla
 
 def fuerzaRepulsiva(k,x):
-    fr = (k**2)/x
-    return fr
+    return (k**2)/x
 
 def fuerzaAtraccion(k,x):
-    fa = (x**2)/k
-    return fa
+    return (x**2)/k
 
 def nomalizeDisp(disp):
-    normal = sqrt((disp[0]**2) + (disp[1]**2))
-    return normal
+    return sqrt(disp[0]**2 + disp[1]**2)
+    
 
-def cool(t,W,L):
-        # permite que un nodo pueda moverse decenas de píxeles al inicio
-     return t * 0.99
-
+def cool(t):
+    return max(t * 0.95,0.01)
 
 def FruchtermanReigold(g,W=1500,L=1500, t=0.95):
+    Wi, Li = 300, 300
     area = W * L
-    iterations = 1000
-    pos_nodes = {n: (round(uniform(50,W-50)), round(uniform(50,L-50))) for n in g.V}
-    k = (sqrt(area/len(g.V)))
-    # k = 70
+    iterations = 800
+    pos_nodes = {n: (round(uniform(0, W)), round(uniform(0, L))) for n in g.V}
+
+    disp = {}
+    k = sqrt(area/len(g.V))
+    print(k)
+
     pygame.init()
     screen = pygame.display.set_mode((W,L))
     running = True
@@ -33,7 +33,6 @@ def FruchtermanReigold(g,W=1500,L=1500, t=0.95):
     for i in range(iterations):
         screen.fill((0,0,0))
         disp = {n: [0,0] for n in g.V}
-        
         for u in g.V:
             for v in g.V:
                 if u != v:
@@ -44,16 +43,16 @@ def FruchtermanReigold(g,W=1500,L=1500, t=0.95):
                     dy = y2 - y1
                     d = sqrt(dx**2+dy**2)
 
-                    if d == 0:
-                        d = 0.01
+                    if d < 0.01:
+                        d = 0.01   
 
                     B = [dx/d, dy/d]
                     C = fuerzaRepulsiva(k,d)
 
                     BC = [B[0]*C, B[1]*C]
 
-                    disp[u][0] -= BC[0]
-                    disp[u][1] -= BC[1] 
+                    disp[u][0] += BC[0]
+                    disp[u][1] += BC[1]
 
         for edge in g.E.values():
             u, v = edge.u, edge.v
@@ -64,9 +63,6 @@ def FruchtermanReigold(g,W=1500,L=1500, t=0.95):
             dy = y2 - y1
             d = sqrt(dx**2+dy**2)
 
-            if d == 0:
-                d = 0.01
-
             B = [dx/d, dy/d]
             C = fuerzaAtraccion(k,d)
 
@@ -76,24 +72,22 @@ def FruchtermanReigold(g,W=1500,L=1500, t=0.95):
             disp[u][1] -= BC[1]
 
             disp[v][0] += BC[0]
-            disp[v][1] += BC[1]
+            disp[v][1] += BC[1]             
 
         for u in g.V:
             # v.pos ← v.pos + (v.disp/|v.disp|) ∗ min(v.disp, t);
-            x, y = pos_nodes[u]
             dx, dy = disp[u]
             normalize = nomalizeDisp(disp[u]) or 0.01 #disp magnitude
+                            
+            new_x = pos_nodes[u][0] + (dx/normalize) * min(normalize,t)
+            new_y = pos_nodes[u][1] + (dy/normalize) * min(normalize,t)
 
-            if normalize > 0:                 
-                dx = dx / normalize * min(normalize,t)
-                dy = dy / normalize * min(normalize,t)
+            new_x = min(W-10,max(10,new_x))
+            new_y = min(L-10,max(10,new_y))
 
-                new_x = min(W, max(50,x+dx))
-                new_y = min(L,max(50,y+dy))
+            pos_nodes[u] = (new_x, new_y)
 
-                pos_nodes[u] = (new_x, new_y) 
-
-        t = cool(t,W,L)
+        t *= 0.995
 
         for v in g.V:
             x, y = pos_nodes[v]
@@ -114,5 +108,5 @@ def FruchtermanReigold(g,W=1500,L=1500, t=0.95):
                 running = False
 
 
-g = grafoMalla(8,7)
+g = grafoMalla(2,4)
 FruchtermanReigold(g)
