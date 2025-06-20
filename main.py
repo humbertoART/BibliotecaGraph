@@ -13,7 +13,7 @@ def main():
     # m = 12
     # mErdos = 12
     # mErdos2 = 35
-    # directed = False
+    directed = False
     # p = 0.5
     # p2 = 0.05
     # p3 = 0.01
@@ -995,8 +995,46 @@ def main():
     # Spring(gDorogovtsevn100)
     # Spring(gDorogovtsevn500)
 
-    gFruchterman = grafoMalla(2,10)
-    FruchtermanReigold(gFruchterman,20,20)
+    # ########################################################################
+    # #PROYECTO 6
+
+    # #Modelo Malla
+    # gMallan9= grafoMalla(9,9,directed) 
+    # gMallan100 = grafoMalla(2,100)
+    # gMallan500 = grafoMalla(2,500)
+    # FruchtermanReigold(gMallan9)
+    # FruchtermanReigold(gMallan100)
+    # FruchtermanReigold(gMallan500)
+
+    # #Modelo Erdos Renyi
+    # gErdosn100 = grafoErdosRenyi(100,289)
+    # gErdosn500 = grafoErdosRenyi(500,2500)
+    # FruchtermanReigold(gErdosn100)
+    # FruchtermanReigold(gErdosn500)
+
+    # #Modelo Gilbert
+    # gGilbertn100 = grafoGilbet(100,0.5)
+    # gGilbertn500 = grafoGilbet(500,0.02)
+    # FruchtermanReigold(gGilbertn100)
+    # FruchtermanReigold(gGilbertn500)
+
+    # #Modelo Geográfico Simple
+    # gSimplen100 = grafoGeograficoSimple(100,0.25,directed)
+    # gSimplen500 = grafoGeograficoSimple(500,0.1,directed)
+    # FruchtermanReigold(gSimplen100)
+    # FruchtermanReigold(gSimplen500)
+
+    # #Modelo Barabasi Albert
+    # gBarabasin100 = grafoBarabasiAlbert(100,10,directed)
+    # gBarabasin500 = grafoBarabasiAlbert(500,15,directed)
+    # FruchtermanReigold(gBarabasin100)
+    # FruchtermanReigold(gBarabasin500)
+
+    # #Modelo Dorogovtsev Mendes
+    # gDorogovtsevn100 = grafoDorogovtsevMendes(100,directed)
+    gDorogovtsevn500 = grafoDorogovtsevMendes(500,directed) 
+    # FruchtermanReigold(gDorogovtsevn100)
+    FruchtermanReigold(gDorogovtsevn500)
 
 if __name__ == "__main__":
     main()

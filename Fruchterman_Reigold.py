@@ -16,9 +16,8 @@ def nomalizeDisp(disp):
 def cool(t):
     return max(t * 0.95,0.01)
 
-def FruchtermanReigold(g,W=1500,L=1500, t=0.95):
-    Wi, Li = 300, 300
-    area = W * L
+def FruchtermanReigold(g,W=1500,L=1500, t=50):
+    area = 300 * 300
     iterations = 800
     pos_nodes = {n: (round(uniform(0, W)), round(uniform(0, L))) for n in g.V}
 
@@ -51,8 +50,8 @@ def FruchtermanReigold(g,W=1500,L=1500, t=0.95):
 
                     BC = [B[0]*C, B[1]*C]
 
-                    disp[u][0] += BC[0]
-                    disp[u][1] += BC[1]
+                    disp[u][0] -= BC[0]
+                    disp[u][1] -= BC[1]
 
         for edge in g.E.values():
             u, v = edge.u, edge.v
@@ -63,16 +62,19 @@ def FruchtermanReigold(g,W=1500,L=1500, t=0.95):
             dy = y2 - y1
             d = sqrt(dx**2+dy**2)
 
+            if d < 0.01:
+                d = 0.01
+
             B = [dx/d, dy/d]
             C = fuerzaAtraccion(k,d)
 
             BC = [B[0]*C, B[1]*C]
 
-            disp[u][0] -= BC[0]
-            disp[u][1] -= BC[1]
+            disp[u][0] += BC[0]
+            disp[u][1] += BC[1]
 
-            disp[v][0] += BC[0]
-            disp[v][1] += BC[1]             
+            disp[v][0] -= BC[0]
+            disp[v][1] -= BC[1]             
 
         for u in g.V:
             # v.pos ← v.pos + (v.disp/|v.disp|) ∗ min(v.disp, t);
@@ -87,7 +89,7 @@ def FruchtermanReigold(g,W=1500,L=1500, t=0.95):
 
             pos_nodes[u] = (new_x, new_y)
 
-        t *= 0.995
+        t *= 0.95
 
         for v in g.V:
             x, y = pos_nodes[v]
@@ -106,7 +108,3 @@ def FruchtermanReigold(g,W=1500,L=1500, t=0.95):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
-
-
-g = grafoMalla(2,4)
-FruchtermanReigold(g)
