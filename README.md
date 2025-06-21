@@ -21,9 +21,11 @@ Materia: Análisis y Diseño de Algoritmos.
 12) IMG_Proyecto3: imágenes de los modelos de grafo generados para el Proyecto 3.
 13) IMG_Proyecto4: incluye las imágenes de los diferentes modelos de grafo creados para el Proyecto 4.
 14) IMG_Proyecto5: incluye las capturas de pantalla de los diferentes modelos de grafo con la implementación de Spring (Proyecto 5).
-15) Texto_Kruskal_Prim: están los archivos GV de Kruskal (Directo e Inverso) y Prim de cada uno de los modelos de grafo generados en el Proyecto 4.
-16) Texto_Proyecto4: se anexan los archivos GV de los diferentes modelos de grado creados en el Proyecto 4.
-17) Links_Proyecto5.pdf: en este archivo están contenidos los links a los videos de la aplicación de Spring en cada uno de los modelos de grafo generados en el Proyecto 5.
+15) IMG_Proyecto6: se anexan las capturas de pantalla de los diferentes modelos de grafo con la implementación de Fruchterman Rigold y de Barnes Hut (Proyecto 6).
+16) Texto_Kruskal_Prim: están los archivos GV de Kruskal (Directo e Inverso) y Prim de cada uno de los modelos de grafo generados en el Proyecto 4.
+17) Texto_Proyecto4: se anexan los archivos GV de los diferentes modelos de grado creados en el Proyecto 4.
+18) Links_Proyecto5.pdf: en este archivo están contenidos los links a los videos de la aplicación de Spring en cada uno de los modelos de grafo generados en el Proyecto 5.
+19) Links_videos_Proyecto6.pdf: se encuentran los enlaces a los videos demostrativos de la aplicación tanto de Fruchterman Rigold como de Barnes Hut en cada uno de los modelos de grafo generados en el Proyecto 6.
 
 
 ## Descripción por archivos .py
@@ -33,7 +35,10 @@ Materia: Análisis y Diseño de Algoritmos.
 3) Graph.py: clase del grafo.
 4) Models_Graphs.py: modelos de los grafos.
 5) main.py: Invocación de cada una de las funciones de los modelos de grafos e instrucción del lugar de almacenamiento de los textos .dot.
-6) Spring.py: método Spring.
+6) Spring.py: algoritmo Spring.
+7) Fruchterman_Reigold.py: algoritmo Furchterman Reigold.
+8) Barnes_Hut.py: algoritmo Barnes Hut.
+9) QuadTree.py: generación del árbol cuaternario utilizado en el algoritmo Barnes Hut.
 
 ## Tabla de parámatros, distribución y números de nodos usados por modelo.
 
